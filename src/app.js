@@ -71,7 +71,7 @@ app.put("/api/products/:pid", async (req, res) => {
     await productManager.updateProduct(parseInt(id), productoActualizado);
     res.json({ message: "Producto actualizado correctamente" });
   } catch (error) {
-    console.log("No pudimos actualizar, vamos a morir ", error);
+    console.log("No pudimos actualizar,", error);
     res.status(500).json({ error: "Error del server" });
   }
 });

@@ -1,14 +1,1 @@
-[
-  {
-    "id": 1,
-    "title": "Toalla",
-    "description": "Toalla de algodón pima",
-    "price": 35000,
-    "image": "sin imagen",
-    "code": "abc133",
-    "stock": 8,
-    "category": "Toalla",
-    "status": true,
-    "thumbnails": []
-  }
-]
+[]
