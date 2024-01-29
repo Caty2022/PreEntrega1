@@ -46,6 +46,7 @@ class ProductManager {
 
     // Acá, después de pushear el nuevo producto, tiene que guardar el array en el archivo.
     await this.guardarArchivo(this.products);
+    
     // Retorna un mensaje indicando el éxito
     return "Producto agregado exitosamente";
   }
@@ -143,8 +144,6 @@ class ProductManager {
   }
 }
 
-
-
 //Testing
 //Se creará una instancia de la clase “ProductManager”
 const productManager = new ProductManager(path);
@@ -172,7 +171,7 @@ const productManager = new ProductManager(path);
 
 //4)El objeto debe agregarse satisfactoriamente con un id generado automáticamente SIN REPETIRSE
 //5)Se llamará el método “getProducts” nuevamente, esta vez debe aparecer el producto recién agregado
-console.log(await productManager.getProducts());
+//console.log(await productManager.getProducts());
 
 //Se llamará al método “getProductById” y se corroborará que devuelva el producto con el id especificado, en caso de no existir, debe arrojar un error.
 //console.log(await productManager.getProductById(4));
