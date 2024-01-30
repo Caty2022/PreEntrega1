@@ -1,4 +1,7 @@
 import { promises as fs } from "fs";
+const cartsPath = ".src/models/carts.json";
+const productsPath = ".src/models/productos.json";
+
 
 class CartManager {
   constructor(cartsPath, productsPath) {
@@ -29,7 +32,9 @@ class CartManager {
     this.carts = JSON.parse(await this.leerArchivo(this.cartsPath, "utf-8"));
     const cart = this.carts.find((cart) => cart.id === cid);
 
-    const products = JSON.parse(await this.leerArchivo(this.productsPath, "utf-8"));
+    const products = JSON.parse(
+      await this.leerArchivo(this.productsPath, "utf-8")
+    );
     const product = products.find((prod) => prod.id === pid);
 
     if (!product) {
@@ -49,23 +54,30 @@ class CartManager {
     }
   }
 
-  async leerArchivo() {
+  async guardarArchivo(path, arrayProductos) {
     try {
-      const respuesta = await fs.readFile(this.path, "utf-8");
-      const arrayProductos = JSON.parse(respuesta);
-      return arrayProductos;
-    } catch (error) {
-      return [];
-    }
-  }
-  async guardarArchivo(arrayProductos) {
-    try {
-      await fs.writeFile(this.path, JSON.stringify(arrayProductos, null, 2));
+      await fs.writeFile(path, JSON.stringify(arrayProductos, null, 2));
     } catch (error) {
       console.error("Error al guardar el archivo");
     }
   }
+  async leerArchivo(path) {
+    try {
+      const respuesta = await fs.readFile(path, "utf-8");
+      if (respuesta.trim() === "") {
+        return null; // Devuelve null en lugar de un array vacío
+      }
+      const arrayProductos = JSON.parse(respuesta);
+      return arrayProductos;
+    } catch (error) {
+      console.error("Error al leer el archivo:", error.message);
+      return null; // Devuelve null en caso de error
+    }
+  }
 }
+
+const cartManager = new CartManager(cartsPath, productsPath);
+cartManager.createCart();
 
 
 export default CartManager;

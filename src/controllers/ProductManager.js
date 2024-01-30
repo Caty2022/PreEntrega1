@@ -146,7 +146,7 @@ class ProductManager {
 
 //Testing
 //Se creará una instancia de la clase “ProductManager”
-const productManager = new ProductManager(path);
+//const productManager = new ProductManager(path);
 
 //Se llamará “getProducts” recién creada la instancia, debe devolver un arreglo vacío []
 //productManager.getProducts();

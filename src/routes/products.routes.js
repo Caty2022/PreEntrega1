@@ -31,7 +31,7 @@ routerProd.post("/", async (req, res) => {
 
 routerProd.put("/:pid", async (req, res) => {
   const { pid } = req.params;
-  const confirmacion = await productManager.updateProducts(
+  const confirmacion = await productManager.updateProduct(
     parseInt(pid),
     req.body
   );
