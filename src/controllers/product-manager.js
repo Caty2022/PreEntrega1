@@ -1,4 +1,4 @@
-import { promises as fs } from "fs";
+const fs = require("fs").promises;
 const path = "./productos.json";
 
 class ProductManager {
@@ -9,23 +9,16 @@ class ProductManager {
 
   static ultId = 0;
 
-  async addProduct({
-    title,
-    description,
-    price,
-    image,
-    code,
-    stock,
-    category,
-    thumbnails,
-  }) {
+  async addProduct({ title, description, price, image, code, stock }) {
     if (!title || !description || !price || !image || !code || !stock) {
-      return "Todos los campos son obligatorios";
+      console.log("Todos los campos son obligatorios");
+      return;
     }
 
     // Validamos que el código sea único
     if (this.products.some((item) => item.code === code)) {
-      return "El código debe ser único";
+      console.log("El código debe ser único");
+      return;
     }
 
     const newProduct = {
@@ -36,9 +29,6 @@ class ProductManager {
       image,
       code,
       stock,
-      category,
-      status: true,
-      thumbnails: thumbnails || [],
     };
 
     // Lo agrego al array
@@ -46,9 +36,6 @@ class ProductManager {
 
     // Acá, después de pushear el nuevo producto, tiene que guardar el array en el archivo.
     await this.guardarArchivo(this.products);
-    
-    // Retorna un mensaje indicando el éxito
-    return "Producto agregado exitosamente";
   }
 
   async getProducts() {
@@ -94,9 +81,9 @@ class ProductManager {
         }
 
         await this.guardarArchivo(arrayProductos);
-        return "Producto actualizado correctamente";
+        console.log("Producto actualizado correctamente");
       } else {
-        return "Producto no encontrado";
+        console.log("Producto no encontrado");
       }
     } catch (error) {
       console.error("Error al actualizar producto");
@@ -117,9 +104,9 @@ class ProductManager {
             2
           )
         );
-        return "Producto eliminado correctamente";
+        console.log("Producto eliminado correctamente");
       } else {
-        return "Producto no encontrado";
+        console.log("Producto no encontrado");
       }
     } catch (error) {
       console.error("Error al eliminar producto");
@@ -132,6 +119,7 @@ class ProductManager {
       const arrayProductos = JSON.parse(respuesta);
       return arrayProductos;
     } catch (error) {
+      console.error("Error al leer el archivo");
       return [];
     }
   }
@@ -144,9 +132,11 @@ class ProductManager {
   }
 }
 
+module.exports = ProductManager;
+
 //Testing
 //Se creará una instancia de la clase “ProductManager”
-//const productManager = new ProductManager(path);
+const productManager = new ProductManager(path);
 
 //Se llamará “getProducts” recién creada la instancia, debe devolver un arreglo vacío []
 //productManager.getProducts();
@@ -158,17 +148,16 @@ class ProductManager {
 //image:”Sin imagen”
 //code:”abc123”,
 //stock:25
-//productManager.addProduct({title:"Remera Mike", description:"Remera elaborada 100% en algodón pima, con cuello tipo t-shirt ",price:20000,image: "sin imagen", code:"abc123", stock:10, category:"Remera", status: true, thumbnails: []});
-//productManager.addProduct({title: "Short Francis",description: "Short rayado para niño, con elástico en la cintura y cordón de algodón",price: 20800,image: "sin imagen",code: "abc124",stock: 15, category:"Short", status: true, thumbnails: []});
-//productManager.addProduct({title: "Enterito Lix Dino",description: "Enterito de algodón pima estampado",price: 44500,image: "sin imagen",code: "abc125",stock: 8, category:"Pijama", status: true, thumbnails: []});
-//productManager.addProduct({title: "Buzo Marley",description: "Buzo fabricado en waffle suave y de calidad",price: 40300,image: "sin imagen",code: "abc126",stock: 15, category:"Sweaters", status: true, thumbnails: []});
-//productManager.addProduct({title: "Vestido Camile",description: "Vestido bretelero confeccionado en muselina de algodón ",price: 38900,image: "sin imagen",code: "abc127",stock: 15, category:"Vestidos", status: true, thumbnails: []});
-//productManager.addProduct({title: "Body Fun",description: "Body estampado elaborado en algodón.",price: 19700,image: "sin imagen",code: "abc128",stock: 15, category:"Bodies", status: true, thumbnails: []});
-//productManager.addProduct({title: "Boxer",description: "Bóxers confeccionados en suave algodón pima",price: 20800,image: "sin imagen",code: "abc129",stock: 15, category:"Ropa interior", status: true, thumbnails: []});
-//productManager.addProduct({title: "Zueco Humms",description: "Zueco Humms Beach",price: 18000,image: "sin imagen",code: "abc130",stock: 15, category:"Calzado", status: true, thumbnails: []});
-//productManager.addProduct({title: "Colonia Baby",description: "Colonia para bebes en frasco de vidrio con vaporizador",price: 21800,image: "sin imagen",code: "abc131",stock: 15, category:"Perfume", status: true, thumbnails: []});
-//productManager.addProduct({title: "Manta Sol",description: "Manta de algodón pima",price: 44000,image: "sin imagen",code: "abc132",stock: 10, category:"Manta", status: true, thumbnails: []});
-
+//productManager.addProduct({title:"Producto prueba", description:"esto es un producto prueba",price: 200,image: "sin imagen", code:"abc123", stock:25});
+//productManager.addProduct({title: "Producto prueba",description: "esto es un producto prueba",price: 300,image: "sin imagen",code: "abc124",stock: 20,});
+//productManager.addProduct({title: "Producto prueba",description: "esto es un producto prueba",price: 300,image: "sin imagen",code: "abc125",stock: 20,});
+//productManager.addProduct({title: "Producto prueba",description: "esto es un producto prueba",price: 300,image: "sin imagen",code: "abc126",stock: 20,});
+//productManager.addProduct({title: "Producto prueba",description: "esto es un producto prueba",price: 300,image: "sin imagen",code: "abc127",stock: 20,});
+//productManager.addProduct({title: "Producto prueba",description: "esto es un producto prueba",price: 300,image: "sin imagen",code: "abc128",stock: 15,});
+//productManager.addProduct({title: "Producto prueba",description: "esto es un producto prueba",price: 300,image: "sin imagen",code: "abc130",stock: 30,});
+//productManager.addProduct({title: "Producto prueba",description: "esto es un producto prueba",price: 300,image: "sin imagen",code: "abc131",stock: 22,});
+//productManager.addProduct({title: "Producto prueba",description: "esto es un producto prueba",price: 300,image: "sin imagen",code: "abc132",stock: 25,});
+//productManager.addProduct({title: "Producto prueba",description: "esto es un producto prueba",price: 300,image: "sin imagen",code: "abc133",stock: 25,});
 //4)El objeto debe agregarse satisfactoriamente con un id generado automáticamente SIN REPETIRSE
 //5)Se llamará el método “getProducts” nuevamente, esta vez debe aparecer el producto recién agregado
 //console.log(await productManager.getProducts());
@@ -181,4 +170,3 @@ class ProductManager {
 
 //Se llamará al método “deleteProduct”, se evaluará que realmente se elimine el producto o que arroje un error en caso de no existir.
 //console.log( await productManager.deleteProduct(1));
-export default ProductManager;

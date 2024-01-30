@@ -1,14 +1,92 @@
 [
   {
     "id": 1,
-    "title": "Toalla",
-    "description": "Toalla de algodón pima",
-    "price": 35000,
+    "title": "Producto prueba",
+    "description": "esto es un producto prueba",
+    "price": 200,
     "image": "sin imagen",
-    "code": "abc135",
-    "stock": 8,
-    "category": "Toalla",
-    "status": true,
-    "thumbnails": []
+    "code": "abc123",
+    "stock": 25
+  },
+  {
+    "id": 2,
+    "title": "Producto prueba",
+    "description": "esto es un producto prueba",
+    "price": 300,
+    "image": "sin imagen",
+    "code": "abc124",
+    "stock": 20
+  },
+  {
+    "id": 3,
+    "title": "Producto prueba",
+    "description": "esto es un producto prueba",
+    "price": 300,
+    "image": "sin imagen",
+    "code": "abc125",
+    "stock": 20
+  },
+  {
+    "id": 4,
+    "title": "Producto prueba",
+    "description": "esto es un producto prueba",
+    "price": 300,
+    "image": "sin imagen",
+    "code": "abc126",
+    "stock": 20
+  },
+  {
+    "id": 5,
+    "title": "Producto prueba",
+    "description": "esto es un producto prueba",
+    "price": 300,
+    "image": "sin imagen",
+    "code": "abc127",
+    "stock": 20
+  },
+  {
+    "id": 6,
+    "title": "Producto prueba",
+    "description": "esto es un producto prueba",
+    "price": 300,
+    "image": "sin imagen",
+    "code": "abc128",
+    "stock": 15
+  },
+  {
+    "id": 7,
+    "title": "Producto prueba",
+    "description": "esto es un producto prueba",
+    "price": 300,
+    "image": "sin imagen",
+    "code": "abc130",
+    "stock": 30
+  },
+  {
+    "id": 8,
+    "title": "Producto prueba",
+    "description": "esto es un producto prueba",
+    "price": 300,
+    "image": "sin imagen",
+    "code": "abc131",
+    "stock": 22
+  },
+  {
+    "id": 9,
+    "title": "Producto prueba",
+    "description": "esto es un producto prueba",
+    "price": 300,
+    "image": "sin imagen",
+    "code": "abc132",
+    "stock": 25
+  },
+  {
+    "id": 10,
+    "title": "Producto prueba",
+    "description": "esto es un producto prueba",
+    "price": 300,
+    "image": "sin imagen",
+    "code": "abc133",
+    "stock": 25
   }
 ]
