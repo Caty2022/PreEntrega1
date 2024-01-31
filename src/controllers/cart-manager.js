@@ -71,4 +71,25 @@ class CartManager {
   }
 }
 
+//Testing
+//const cartManager = new CartManager("carts.json");
+cartManager.crearCarrito();
+cartManager.crearCarrito();
+cartManager.crearCarrito();
+cartManager.crearCarrito();
+cartManager.crearCarrito();
+cartManager.agregarProductoAlCarrito(1, 1, 1);
+cartManager.agregarProductoAlCarrito(2, 2, 2);
+cartManager.agregarProductoAlCarrito(3, 3, 3);
+cartManager.agregarProductoAlCarrito(4, 4, 4);
+cartManager.agregarProductoAlCarrito(5, 5, 5);
+
+
+
+
+
+
+  
+  
+
 module.exports = CartManager;
